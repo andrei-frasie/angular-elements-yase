@@ -7,9 +7,27 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <h1>YASE - Angular Elements</h1>
+    <h4>
+      Integrating multiple Angular WebComponents on one page (from same project
+      source)
+    </h4>
+    <br />
     <ng-alerter></ng-alerter>
     <br />
     <ng-logger></ng-logger>
+    <br />
+    <div style="margin-bottom: 30px">
+      <label for="attribute-input">
+        Value to be set to 'ng-reactive' component for attribute 'ng-my-input':
+      </label>
+      <input id="attribute-input" type="text" placeholder="some text" />
+      <button onclick="switchReactiveWebComponentAttribute('attribute-input')">
+        Apply
+      </button>
+    </div>
+    <ng-reactive></ng-reactive>
     <script type="text/javascript" src="framework-wc.js"></script>
+    <script type="text/javascript" src="script.js"></script>
   </body>
 </html>
