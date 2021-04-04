@@ -1,6 +1,6 @@
 # Yet another simple example #2 (YASE #2)
 
-Simple project ro try out Angular Elements.
+Simple project to try out Angular Elements.
 
 Context:
 
