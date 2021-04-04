@@ -1,18 +1,25 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { ApplicationRef, DoBootstrap, Injector, NgModule } from "@angular/core";
+import { createCustomElement } from "@angular/elements";
+import { BrowserModule } from "@angular/platform-browser";
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AlerterComponent } from "./modules/alerter/alerter.component";
+import { LoggerComponent } from "./modules/logger/logger.component";
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+  declarations: [AlerterComponent, LoggerComponent],
+  imports: [BrowserModule],
 })
-export class AppModule { }
+export class AppModule implements DoBootstrap {
+  constructor(private readonly injector: Injector) {}
+
+  ngDoBootstrap(_appRef: ApplicationRef): void {
+    const alerterComponent = createCustomElement(AlerterComponent, {
+      injector: this.injector,
+    });
+    const loggerComponent = createCustomElement(LoggerComponent, {
+      injector: this.injector,
+    });
+    customElements.define("ng-alerter", alerterComponent);
+    customElements.define("ng-logger", loggerComponent);
+  }
+}
